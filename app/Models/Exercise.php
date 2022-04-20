@@ -18,4 +18,10 @@ class Exercise extends Model
         'secondMax' => 10,
         'operator' => '+',
     ];
+
+    public function operator()
+{
+    return $this->belongsTo(Operation::class);
+}
+
 }

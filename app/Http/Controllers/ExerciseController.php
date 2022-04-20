@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercise;
+use App\Models\Operation;
 use Illuminate\Http\Request;
 
 class ExerciseController extends Controller
@@ -26,7 +27,8 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        return view('exercises.create');
+        $operations = Operation::all();
+        return view('exercises.create',compact('operations'));
     }
 
     /**
