@@ -39,7 +39,30 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        dd('ok');
+        
+        $request->validate([
+            'name' => ['required', 'max:255','min:3'],
+            'description' => ['nullable', 'max:255'],
+            'firstMin' => ['required', 'min:0'],
+            'firstMax' => ['required', 'min:0'],
+            'operation' => ['required'],
+            'quantity' => ['required', 'min:0'],
+            'secondMin' => ['required', 'min:0'],
+            'secondMax' => ['required', 'min:0'],
+        ]);
+        
+        Exercise::create([
+            'name' => $request->name,
+            'description' => $request->descrition,
+            'firstMin' => $request->firstMin,
+            'firstMax' => $request->firstMax,
+            'operation_id' => Operation::firstWhere('slug',$request['operation'])->id,
+            'quantity' => $request->quantity,
+            'secondMin' => $request->secondMin,
+            'secondMax' => $request->secondMax,
+        ]);
+
+        return redirect()->route('exercises.index');
     }
 
     /**
