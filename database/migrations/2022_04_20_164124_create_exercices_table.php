@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->integer('quantity')->default(5);
-            $table->integer('firstMin')->default(0);
+            $table->integer('quantity');
+            $table->integer('firstMin');
             $table->integer('firstMax');
-            $table->integer('secondMin')->default(0);
+            $table->integer('secondMin');
             $table->integer('secondMax');
-            $table->enum('operator',['+','-','*','/'])->default('+');
+            $table->enum('operator',['+','-','*','/']);
             $table->timestamps();
         });
     }
