@@ -4,8 +4,17 @@
             {{ __('Exercises') }}
         </h2>
     </x-slot>
+    
 <section class="bg-gray-200 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 py-12 mx-auto">
+    <div class="p-2 w-full">
+     <a href="{{ route('exercises.create' )}}">
+        <button 
+        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+        Ajouter un exercice
+    </button>
+     </a>
+    </div>
     <div class="flex flex-wrap -m-4">
     @forelse ($exercises as $exercise )
     <div class="p-4 lg:w-1/3">

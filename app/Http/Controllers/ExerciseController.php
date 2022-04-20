@@ -26,7 +26,7 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        //
+        return view('exercises.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('ok');
     }
 
     /**
