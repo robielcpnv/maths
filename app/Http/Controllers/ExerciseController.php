@@ -39,7 +39,6 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
             'name' => ['required', 'max:255','min:3'],
             'description' => ['nullable', 'max:255'],
@@ -53,13 +52,15 @@ class ExerciseController extends Controller
         
         Exercise::create([
             'name' => $request->name,
-            'description' => $request->descrition,
+            'description' => $request->description,
             'firstMin' => $request->firstMin,
             'firstMax' => $request->firstMax,
+            'firstMultiplier' => $request->firstMultiplier?$request->firstMultiplier:1,
             'operation_id' => Operation::firstWhere('slug',$request['operation'])->id,
             'quantity' => $request->quantity,
             'secondMin' => $request->secondMin,
             'secondMax' => $request->secondMax,
+            'secondMultiplier' => $request->secondMultiplier?$request->secondMultiplier:1,
         ]);
 
         return redirect()->route('exercises.index');
@@ -77,8 +78,8 @@ class ExerciseController extends Controller
          for ($i=0; $i < $exercise->quantity; $i++) { 
             $questions[$i]= [
                 "id" => $i,
-                "first" => rand($exercise->firstMin,$exercise->firstMax),
-                "second" => rand($exercise->secondMin,$exercise->secondMax),
+                "first" => rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier,
+                "second" => rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier,
                 "operator" => $exercise->operation->name,
             ];
         }
