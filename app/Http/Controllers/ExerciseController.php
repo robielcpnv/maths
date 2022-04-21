@@ -110,6 +110,8 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        //
+        $exercise->delete();
+        $exercises = Exercise::all()->sortByDesc('updated_at');
+        return redirect()->route('exercises.index', compact('exercises'));
     }
 }
