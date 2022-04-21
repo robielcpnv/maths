@@ -26,52 +26,51 @@
         <div class="p-2 w-1/2">
           <div class="md:flex md:items-center mb-6">
             @if ($question->operation->name !== '<>')
-            <div class="md:w-1/3">
-              <label for="{{$question['id']}}" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                {{$question['first']."  ".$question->operation->name."  ".$question['second']."  =  "}}
-              </label>
-            </div>
-            <div class="md:w-2/3">
-              <input type="number" id="{{$question['id']}}" name="{{$question['id']}}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
-            </div>
+              <div class="md:w-1/3">
+                <label for="{{$question['id']}}" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                  {{$question['first']."  ".$question->operation->name."  ".$question['second']."  =  "}}
+                </label>
+              </div>
+              <div class="md:w-2/3">
+                <input type="number" id="{{$question['id']}}" name="{{$question['id']}}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+              </div>
             @else
-
-            <div class="md:w-1/6">
-              <p class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                {{$question['first']}}
-              </p>
-            </div>
-            <div class="md:w-2/3">
-
-              <ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
-                <li class="relative">
-                  <input class="sr-only peer" type="radio" value="greater" name="{{$question['id']}}" id="{{$question['id'].'greater'}}">
-                  <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent" 
-                  for="{{$question['id'].'greater'}}">></label>
-              
-                <li class="relative">
-                  <input class="sr-only peer" type="radio" value="equal" name="{{$question['id']}}" id="{{$question['id'].'equal'}}">
-                  <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" 
-                  for="{{$question['id'].'equal'}}">=</label>
-              
-                 </li>
-              
-                <li class="relative">
-                  <input class="sr-only peer" type="radio" value="smaller" name="{{$question['id']}}" id="{{$question['id'].'smaller'}}">
-                  <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent" 
-                  for="{{$question['id'].'smaller'}}"><</label>
-              
-                </li>
-              </ul>
-        </div>
-            <div class="md:w-1/6">
+              <div class="md:w-1/6">
                 <p class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                  {{$question['second']}}
+                  {{$question['first']}}
                 </p>
-            </div>
+              </div>
+              <div class="md:w-2/3">
+
+                <ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
+                  <li class="relative">
+                    <input class="sr-only peer" type="radio" value="greater" name="{{$question['id']}}" id="{{$question['id'].'greater'}}">
+                    <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent" 
+                    for="{{$question['id'].'greater'}}">></label>
+                
+                  <li class="relative">
+                    <input class="sr-only peer" type="radio" value="equal" name="{{$question['id']}}" id="{{$question['id'].'equal'}}">
+                    <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" 
+                    for="{{$question['id'].'equal'}}">=</label>
+                
+                  </li>
+                
+                  <li class="relative">
+                    <input class="sr-only peer" type="radio" value="smaller" name="{{$question['id']}}" id="{{$question['id'].'smaller'}}">
+                    <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent" 
+                    for="{{$question['id'].'smaller'}}"><</label>
+                
+                  </li>
+                </ul>
+              </div>
+              <div class="md:w-1/6">
+                  <p class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                    {{$question['second']}}
+                  </p>
+              </div>
+            @endif
           </div>
         </div>
-        @endif
         @empty
           
         @endforelse
