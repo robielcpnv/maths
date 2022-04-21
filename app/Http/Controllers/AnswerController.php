@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Exercise;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -33,9 +35,27 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Question $question )
     {
-        //
+        $exercise = Exercise::find($question->exercise_id);
+
+        $answers = $request->input('answer');
+        $request->validate([
+            'answers.*' => ['required']
+        ]);
+
+        foreach ($answers as $key => $answer) {
+            $question = Question::firstWhere('id',$key);
+            Answer::create([
+                'answer' => $answer,
+                'question_id' => $question->id,
+                'user_id' => auth()->user()->id,
+                'correct' => $question->answer == $answer ? 1 : 0
+            ]);
+        }
+
+        $questions = Question::all()->where('exercise_id',$exercise->id)->sortByDesc('updated_at')->groupBy('cycle');
+        return view('exercises.show',compact('exercise','questions'));
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ require __DIR__.'/auth.php';
 
 Route::resource('exercises', ExerciseController::class);
 Route::resource('exercises.questions', QuestionController::class);
+Route::resource('questions.answers', AnswerController::class);

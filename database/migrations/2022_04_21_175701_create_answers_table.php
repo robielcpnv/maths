@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('answer');
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('correct');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
