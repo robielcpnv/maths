@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercise;
 use App\Models\Operation;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class ExerciseController extends Controller
@@ -74,7 +75,8 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        return view('exercises.show',compact('exercise')); 
+        $questions = Question::all()->where('exercise_id',$exercise->id)->groupBy('cycle');
+        return view('exercises.show',compact('exercise','questions'));
     }
 
     /**

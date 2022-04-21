@@ -25,16 +25,7 @@ class QuestionController extends Controller
      */
     public function create(Exercise $exercise)
     {
-        $questions=[];
-        for ($i=0; $i < $exercise->quantity; $i++) { 
-            Question::create([
-                "first" => rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier,
-                "second" => rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier,
-                'operation_id' => $exercise->operation->id,
-                'exercise_id' => $exercise->id,
-                'cycle' => 1
-            ]);
-       }
+       //
     }
 
     /**
@@ -46,7 +37,7 @@ class QuestionController extends Controller
     public function store(Exercise $exercise)
     {
         $cycle = Question::all()->where('exercise_id',$exercise->id)->max('cycle');
-        $cycle==null?$cycle=1:$cycle++;
+        $cycle == null ? $cycle = 1 : $cycle++;
         for ($i=0; $i < $exercise->quantity; $i++) { 
             Question::create([
                 "first" => rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier,
@@ -56,7 +47,7 @@ class QuestionController extends Controller
                 'cycle' => $cycle
             ]);
        }
-       dd(Question::all());
+       return redirect()->route('exercises.index');
     
     }
 
