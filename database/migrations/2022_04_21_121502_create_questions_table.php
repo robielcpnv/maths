@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('operation_id')->references('id')->on('operations');
             $table->foreign('exercise_id')->references('id')->on('exercises');
             $table->integer('cycle');
+            $table->string('answer');
             $table->timestamps();
         });
     }

@@ -38,11 +38,21 @@ class QuestionController extends Controller
     {
         $cycle = Question::all()->where('exercise_id',$exercise->id)->max('cycle');
         $cycle == null ? $cycle = 1 : $cycle++;
+        $operator = $exercise->operation;
+
         for ($i=0; $i < $exercise->quantity; $i++) { 
+            
+            $f = rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier;
+            $s = rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier;
+
+            $result = eval("return $f $operator->name $s;");
+            $compare = $f == $s ?'=':($f > $s?'>':'<');
+
             Question::create([
-                "first" => rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier,
-                "second" => rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier,
-                'operation_id' => $exercise->operation->id,
+                'first' => $f,
+                'second' => $s,
+                'operation_id' => $operator->id,
+                'answer' => $operator->id <5 ? $result : $compare,
                 'exercise_id' => $exercise->id,
                 'cycle' => $cycle
             ]);
