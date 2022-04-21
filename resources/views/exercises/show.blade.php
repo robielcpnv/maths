@@ -32,7 +32,7 @@
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
             </div>
-            <h2 class="text-gray-900 text-lg title-font font-medium">Status</h2>
+            <h2 class="text-gray-900 text-lg title-font font-medium">{{$question->first()->answer ?'Terminer':'En cours'}}</h2>
           </div>
           <div class="flex-grow">
             <p class="leading-relaxed text-base">{{$question->first()->created_at->translatedFormat('jS F Y h:i')}}</p>
