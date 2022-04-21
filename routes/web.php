@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('exercises', ExerciseController::class);
+Route::resource('exercises.questions', QuestionController::class);
