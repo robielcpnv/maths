@@ -35,7 +35,7 @@
             <h2 class="text-gray-900 text-lg title-font font-medium">Status</h2>
           </div>
           <div class="flex-grow">
-            <p class="leading-relaxed text-base">date</p>
+            <p class="leading-relaxed text-base">{{$question->first()->created_at->translatedFormat('jS F Y h:i')}}</p>
             <a href="{{route('exercises.questions.show',[$exercise,App\Models\Question::find($question->first()->id)])}}"
             class="mt-3 text-indigo-500 inline-flex items-center">
               

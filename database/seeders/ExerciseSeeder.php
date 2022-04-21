@@ -16,7 +16,7 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-         for ($i = 0; $i < 30; $i++) {
+         for ($i = 0; $i < 5; $i++) {
             $operator = Operation::all()->random();
             $min = rand(1, 20);
             $max = rand(20, 50);

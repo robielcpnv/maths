@@ -16,7 +16,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::all();
+        $exercises = Exercise::all()->sortByDesc('updated_at');
         return view('exercises.index', compact('exercises'));
 
     }
@@ -75,7 +75,7 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        $questions = Question::all()->where('exercise_id',$exercise->id)->groupBy('cycle');
+        $questions = Question::all()->where('exercise_id',$exercise->id)->sortByDesc('updated_at')->groupBy('cycle');
         return view('exercises.show',compact('exercise','questions'));
     }
 

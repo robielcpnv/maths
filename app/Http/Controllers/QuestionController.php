@@ -47,7 +47,7 @@ class QuestionController extends Controller
                 'cycle' => $cycle
             ]);
        }
-       return redirect()->route('exercises.index');
+       return redirect()->route('exercises.show',$exercise);
     
     }
 
