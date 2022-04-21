@@ -21,6 +21,7 @@ class OperationSeeder extends Seeder
                 ['name' => '-', 'slug' => 'SUB'],
                 ['name' => '*', 'slug' => 'MUL'],
                 ['name' => '/', 'slug' => 'DIV'],
+                ['name' => '<>', 'slug' => 'CMP'],
             ]
         );
     }
