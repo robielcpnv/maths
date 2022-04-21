@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('exercise_id');
             $table->foreign('operation_id')->references('id')->on('operations');
             $table->foreign('exercise_id')->references('id')->on('exercises');
+            $table->integer('cycle');
             $table->timestamps();
         });
     }

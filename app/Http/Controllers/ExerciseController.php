@@ -74,17 +74,7 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        $questions=[];
-         for ($i=0; $i < $exercise->quantity; $i++) { 
-            $questions[$i]= [
-                "id" => $i,
-                "first" => rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier,
-                "second" => rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier,
-                "operator" => $exercise->operation->name,
-            ];
-        }
-
-        return view('exercises.show',compact('exercise','questions')); 
+        return view('exercises.show',compact('exercise')); 
     }
 
     /**

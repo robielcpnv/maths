@@ -22,8 +22,12 @@ class Exercise extends Model
     ];
 
     public function operation()
-{
-    return $this->belongsTo(Operation::class);
-}
+    {
+        return $this->belongsTo(Operation::class);
+    }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }
