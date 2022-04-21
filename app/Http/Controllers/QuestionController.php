@@ -13,7 +13,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Exercise $exercise)
     {
        //
     }
@@ -57,9 +57,10 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(Exercise $exercise,Question $question)
     {
-        //
+        $questions = Question::all()->where('exercise_id',$exercise->id)->where('cycle',$question->cycle);
+        return view('questions.show',compact('questions','exercise'));
     }
 
     /**

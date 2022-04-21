@@ -23,13 +23,11 @@
      
         @forelse ($questions as $question)
 
-        
-
         <div class="p-2 w-1/2">
           <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
               <label for="{{$question['id']}}" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                {{$question['first']."  ".$question['operator']."  ".$question['second']."  =  "}}
+                {{$question['first']."  ".$question->operation->name."  ".$question['second']."  =  "}}
               </label>
             </div>
             <div class="md:w-2/3">

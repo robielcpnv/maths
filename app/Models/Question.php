@@ -15,4 +15,9 @@ class Question extends Model
         return $this->belongsTo(Exercise::class);
     }
 
+    public function operation()
+    {
+        return $this->belongsTo(Operation::class);
+    }
+
 }
