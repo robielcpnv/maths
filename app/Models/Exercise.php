@@ -19,7 +19,7 @@ class Exercise extends Model
         'operator' => '+',
     ];
 
-    public function operator()
+    public function operation()
 {
     return $this->belongsTo(Operation::class);
 }
