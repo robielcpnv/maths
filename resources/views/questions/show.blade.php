@@ -63,19 +63,15 @@
               
                 </li>
               </ul>
-</div>
+        </div>
             <div class="md:w-1/6">
-              <p class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                {{$question['second']}}
-              </p>
+                <p class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                  {{$question['second']}}
+                </p>
             </div>
-            @endif
-
-           
-
           </div>
         </div>
-       
+        @endif
         @empty
           
         @endforelse

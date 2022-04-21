@@ -6,7 +6,7 @@
     </x-slot>
     
 <section class="bg-gray-200 body-font">
-  <div class="container px-5 py-12 mx-auto">
+  <div class="container px-5 py-8 mx-auto">
     <div class="p-2 w-full">
      <a href="{{ route('exercises.create' )}}">
         <button 
@@ -15,9 +15,9 @@
     </button>
      </a>
     </div>
-    <div class="flex flex-wrap -m-4">
+    <div class="flex flex-wrap -m-4 pt-5">
     @forelse ($exercises as $exercise )
-    <div class="p-4 lg:w-1/3">
+    <div class="p-4 lg:w-1/3 hover:scale-110">
         <div class="h-full bg-gray-50 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
           <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{$exercise->operator}}</h2>
           <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$exercise->name}}</h1>
