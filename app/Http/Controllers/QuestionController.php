@@ -37,9 +37,9 @@ class QuestionController extends Controller
     public function store(Exercise $exercise)
     {
         $cycle = Question::all()->where('exercise_id',$exercise->id)->max('cycle');
-        $cycle == null ? $cycle = 1 : $cycle++;
+        $cycle == null ? $cycle = 1 : $cycle;
         $operator = $exercise->operation;
-
+        $cycle++;
         for ($i=0; $i < $exercise->quantity; $i++) { 
             
             $f = rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier;
@@ -52,7 +52,7 @@ class QuestionController extends Controller
                 'first' => $f,
                 'second' => $s,
                 'operation_id' => $operator->id,
-                'answer' => $operator->id <5 ? $result : $compare,
+                'response' => $operator->id <5 ? $result : $compare,
                 'exercise_id' => $exercise->id,
                 'cycle' => $cycle
             ]);

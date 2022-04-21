@@ -19,5 +19,8 @@ class Question extends Model
     {
         return $this->belongsTo(Operation::class);
     }
-
+    public function answer()
+    {
+        return $this->hasOne(Answer::class);
+    }
 }

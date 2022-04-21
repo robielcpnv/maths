@@ -47,10 +47,10 @@ class AnswerController extends Controller
         foreach ($answers as $key => $answer) {
             $question = Question::firstWhere('id',$key);
             Answer::create([
-                'answer' => $answer,
+                'response' => $answer,
                 'question_id' => $question->id,
                 'user_id' => auth()->user()->id,
-                'correct' => $question->answer == $answer ? 1 : 0
+                'correct' => $question->response == $answer ? 1 : 0
             ]);
         }
 
