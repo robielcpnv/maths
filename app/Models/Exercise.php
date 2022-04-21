@@ -17,6 +17,8 @@ class Exercise extends Model
         'secondMin' => 0,
         'secondMax' => 10,
         'operator' => '+',
+        'firstMultiplier' => 1,
+        'secondMultiplier' => 1,
     ];
 
     public function operation()

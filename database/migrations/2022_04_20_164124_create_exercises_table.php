@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->integer('quantity');
+            $table->integer('quantity')->default(5);
             $table->integer('firstMin');
             $table->integer('firstMax');
             $table->integer('secondMin');
