@@ -22,16 +22,25 @@
     <div class=" relative p-4 lg:w-1/3 hover:scale-110">
         <div class="h-full bg-gray-50 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
 
-          <form method="POST" action="{{ route('exercises.destroy',$exercise)}}" class="absolute right-0 top-0"> 
-            @csrf
-            @method('delete')
-              <button type="submit">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current  text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </button>
-         </form>
-
+          <div class="absolute right-0 top-0 inline-flex p-2">
+            <div class="px-2">
+              <a href="{{ route('exercises.edit',$exercise)}}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 hover:text-red-700"" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </a>
+             </div>
+    
+            <form method="POST" action="{{ route('exercises.destroy',$exercise)}}"> 
+              @csrf
+              @method('delete')
+                <button type="submit">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+           </form>
+          </div>
           <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{$exercise->operator}}</h2>
           <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$exercise->name}}</h1>
           <p class="leading-relaxed mb-3">{{$exercise->description}}</p>

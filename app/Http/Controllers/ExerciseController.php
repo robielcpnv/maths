@@ -87,7 +87,8 @@ class ExerciseController extends Controller
      */
     public function edit(Exercise $exercise)
     {
-        //
+        $operations = Operation::all();
+        return view('exercises.edit',compact('exercise','operations'));
     }
 
     /**
