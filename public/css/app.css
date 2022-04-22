@@ -1150,8 +1150,14 @@ select {
 .pr-2 {
   padding-right: 0.5rem;
 }
+.text-left {
+  text-align: left;
+}
 .text-center {
   text-align: center;
+}
+.text-right {
+  text-align: right;
 }
 .font-sans {
   font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -1179,6 +1185,14 @@ select {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .font-medium {
   font-weight: 500;
@@ -1649,8 +1663,16 @@ select {
     width: 16.666667%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:items-center {
     align-items: center;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-right {
