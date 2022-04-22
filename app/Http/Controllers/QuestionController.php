@@ -65,6 +65,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        dd($question);
         //
     }
 }

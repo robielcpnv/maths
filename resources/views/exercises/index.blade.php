@@ -18,53 +18,51 @@
     <div class="flex flex-wrap -m-4 pt-5">
     @forelse ($exercises as $exercise )
 
-
-    <div class=" relative p-4 lg:w-1/3 hover:scale-110">
-        <div class="h-full bg-gray-50 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
-
-          <div class="absolute right-0 top-0 inline-flex p-2">
-            <div class="px-2">
-              <a href="{{ route('exercises.edit',$exercise)}}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 hover:text-red-700"" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-              </a>
-             </div>
-    
-            <form method="POST" action="{{ route('exercises.destroy',$exercise)}}"> 
-              @csrf
-              @method('delete')
-                <button type="submit">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </button>
-           </form>
-          </div>
-          <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{$exercise->operator}}</h2>
-          <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$exercise->name}}</h1>
-          <p class="leading-relaxed mb-3">{{$exercise->description}}</p>
-          <a href="{{route('exercises.show',$exercise)}}" 
-          class="text-indigo-500 inline-flex items-center">
-            S'entraîner
-            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-          <div class="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
+    <div class="p-4 md:w-1/3 ">
+      <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110 ">
+         
+        <div class="absolute right-0 top-0 inline-flex p-2">
+          <div class="px-2">
+            <a href="{{ route('exercises.edit',$exercise)}}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </a>
+           </div>
+  
+          <form method="POST" action="{{ route('exercises.destroy',$exercise)}}"> 
+            @csrf
+            @method('delete')
+              <button type="submit">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+         </form>
+        </div>
+        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{$exercise->operator}}</h2>
+        <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$exercise->name}}</h1>
+        <p class="leading-relaxed mb-3">{{$exercise->description}}</p>
+       
+          
+          <div class="text-center mt-2 leading-none flex justify-center bottom-0 left-0 w-full">
             <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-              <svg class="w-4 h-4 mr-1 fill-current  text-gray-600 " stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+              <a href="{{route('exercises.show',$exercise)}}" title="S'entraîner" 
+              class="text-indigo-500 inline-flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-500  hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
               </svg>
               {{App\Models\Question::all()->where('exercise_id',$exercise->id)->groupBy('cycle')->count()}}
+              </a>
               
             </span>
             
           </div>
-        </div>
+        
       </div>
-    @empty
+    </div>
+
+ @empty
         
     @endforelse
     
