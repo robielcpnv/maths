@@ -8,26 +8,8 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Exercise $exercise)
-    {
-       //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Exercise $exercise)
-    {
-       //
-    }
-
+    // index method no need because exercise.show method will be used
+    // create method no need because store method will be used automatically
     /**
      * Store a newly created resource in storage.
      *
@@ -73,28 +55,7 @@ class QuestionController extends Controller
         return view('questions.show',compact('questions','exercise'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Question $question)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Question  $question
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Question $question)
-    {
-        //
-    }
+    // edit and update method no need because the questiona are created automatically no need to edit them
 
     /**
      * Remove the specified resource from storage.

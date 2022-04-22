@@ -28,5 +28,5 @@ require __DIR__.'/auth.php';
 
 Route::resource('exercises', ExerciseController::class)->middleware('auth');
 
-Route::resource('exercises.questions', QuestionController::class)->middleware('auth');
+Route::resource('exercises.questions', QuestionController::class)->except(['index','create','edit','update'])->middleware('auth');
 Route::resource('questions.answers', AnswerController::class)->middleware('auth');
