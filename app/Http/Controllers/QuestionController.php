@@ -63,9 +63,11 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(Exercise $exercise, Question $question)
     {
-        dd($question);
-        //
+        $questions = Question::where('exercise_id',$exercise->id)->where('cycle',$question->cycle)->get(['id']);
+        Question::destroy($questions->toArray());
+        
+        return redirect()->route('exercises.show',$exercise);
     }
 }
