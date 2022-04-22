@@ -100,7 +100,29 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'max:255','min:3'],
+            'firstMin' => ['required', 'min:0'],
+            'firstMax' => ['required', 'min:0'],
+            'quantity' => ['required', 'min:0'],
+            'secondMin' => ['required', 'min:0'],
+            'secondMax' => ['required', 'min:0'],
+            'firstMultiplier' => ['required', 'gt:0'],
+            'secondMultiplier' => ['required', 'gt:0'],
+        ]);
+        if($request->description){
+            $data['description'] = $request->description;
+        }
+
+        $operation = Operation::firstWhere('slug',$request['operation'])->id;
+        if($operation !== $exercise->operation_id){
+            $data['operation_id'] = $operation;
+        }
+
+       $exercise->update($data);
+       $exercise->save();
+       
+       return redirect()->route('exercises.show',$exercise);
     }
 
     /**
