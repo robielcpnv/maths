@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('response');
+            $table->string('result');
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('user_id');
             $table->boolean('correct');

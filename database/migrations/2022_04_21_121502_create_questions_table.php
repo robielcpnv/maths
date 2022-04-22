@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('operation_id')->references('id')->on('operations')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('exercise_id')->references('id')->on('exercises')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->integer('cycle');
-            $table->string('response');
+            $table->string('result');
             $table->timestamps();
         });
     }

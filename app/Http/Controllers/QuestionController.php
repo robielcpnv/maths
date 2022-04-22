@@ -34,7 +34,7 @@ class QuestionController extends Controller
                 'first' => $f,
                 'second' => $s,
                 'operation_id' => $operator->id,
-                'response' => $operator->id <5 ? $result : $compare,
+                'result' => $operator->id <5 ? $result : $compare,
                 'exercise_id' => $exercise->id,
                 'cycle' => $cycle
             ]);

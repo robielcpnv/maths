@@ -44,19 +44,19 @@
 
                 <ul class="grid grid-cols-3 gap-x-5 m-10 max-w-md mx-auto">
                   <li class="relative hover:scale-110">
-                    <input class="sr-only peer" type="radio" value="greater" name="answer[{{$question['id']}}]" id="{{$question['id'].'greater'}}">
+                    <input class="sr-only peer" type="radio" value=">" name="answer[{{$question['id']}}]" id="{{$question['id'].'greater'}}">
                     <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-yellow-500 peer-checked:ring-2 peer-checked:border-transparent" 
                     for="{{$question['id'].'greater'}}">></label>
                 
                   <li class="relative hover:scale-110">
-                    <input class="sr-only peer" type="radio" value="equal" name="answers[{{$question['id']}}]" id="{{$question['id'].'equal'}}">
+                    <input class="sr-only peer" type="radio" value="=" name="answers[{{$question['id']}}]" id="{{$question['id'].'equal'}}">
                     <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-green-500 peer-checked:ring-2 peer-checked:border-transparent" 
                     for="{{$question['id'].'equal'}}">=</label>
                 
                   </li>
                 
                   <li class="relative hover:scale-110">
-                    <input class="sr-only peer" type="radio" value="smaller" name="answer[{{$question['id']}}]" id="{{$question['id'].'smaller'}}">
+                    <input class="sr-only peer" type="radio" value="<" name="answer[{{$question['id']}}]" id="{{$question['id'].'smaller'}}">
                     <label class="flex p-5 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:ring-red-500 peer-checked:ring-2 peer-checked:border-transparent" 
                     for="{{$question['id'].'smaller'}}"><</label>
                 

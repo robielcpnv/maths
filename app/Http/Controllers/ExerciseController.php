@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Exercise;
 use App\Models\Operation;
 use App\Models\Question;
