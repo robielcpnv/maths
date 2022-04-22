@@ -7,6 +7,7 @@ use App\Models\Exercise;
 use App\Models\Operation;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExerciseController extends Controller
 {
@@ -41,6 +42,8 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Exercise::class);
+        
         $request->validate([
             'name' => ['required', 'max:255','min:3'],
             'description' => ['nullable', 'max:255'],
@@ -101,6 +104,7 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
+        $this->authorize('update', $exercise);
         $data = $request->validate([
             'name' => ['required', 'max:255','min:3'],
             'firstMin' => ['required', 'min:0'],
@@ -134,6 +138,7 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
+        $this->authorize('delete', $exercise);
         $exercise->delete();
         $exercises = Exercise::all()->sortByDesc('updated_at');
         return redirect()->route('exercises.index', compact('exercises'));

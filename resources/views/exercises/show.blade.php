@@ -12,13 +12,18 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900"> {{ $exercise->description }} </h1>
               </div>
           </div>
-          <form method="POST" action="{{ route('exercises.questions.store',$exercise)}}" class="p-2 w-full"> 
-            @csrf
-                <button type="submit"
-                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Ajouter un devoir
-                </button>
-           </form>
+
+          @can('create', App\Question::class)
+            <form method="POST" action="{{ route('exercises.questions.store',$exercise)}}" class="p-2 w-full"> 
+              @csrf
+                  <button type="submit"
+                      class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                      Ajouter un devoir
+                  </button>
+            </form>
+          @endcan
+
+          
          <section class="text-gray-600 body-font">
   <div class="container px-5 py-8 mx-auto">
     <div class="flex flex-wrap -m-4">
@@ -29,16 +34,20 @@
 
 
           <div class="absolute right-0 top-0 inline-flex p-2">
+
+            @can('delete', App\Models\Question::find($question->first()->id))
+              <form method="POST" action="{{ route('exercises.questions.destroy',[$exercise,App\Models\Question::find($question->first()->id)])}}"> 
+                @csrf
+                @method('delete')
+                  <button type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+            </form>
+            @endcan
     
-            <form method="POST" action="{{ route('exercises.questions.destroy',[$exercise,App\Models\Question::find($question->first()->id)])}}"> 
-              @csrf
-              @method('delete')
-                <button type="submit">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-gray-300 hover:text-red-700" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </button>
-           </form>
+           
           </div>
 
           <div class="flex items-center mb-3">

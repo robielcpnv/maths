@@ -7,14 +7,16 @@
     
 <section class="bg-gray-200 body-font">
   <div class="container px-5 py-8 mx-auto">
-    <div class="p-2 w-full">
-     <a href="{{ route('exercises.create' )}}">
-        <button 
-        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-        Ajouter un exercice
-    </button>
-     </a>
-    </div>
+    @can('create', App\Exercise::class)
+      <div class="p-2 w-full">
+        <a href="{{ route('exercises.create' )}}">
+          <button 
+            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+            Ajouter un exercice
+          </button>
+        </a>
+      </div>
+    @endcan
     <div class="flex flex-wrap -m-4 pt-5">
     @forelse ($exercises as $exercise )
 
@@ -22,14 +24,18 @@
       <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110 ">
          
         <div class="absolute right-0 top-0 inline-flex p-2">
-          <div class="px-2">
-            <a href="{{ route('exercises.edit',$exercise)}}">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-            </a>
-           </div>
-  
+
+          @can('update', $exercise)
+            <div class="px-2">
+              <a href="{{ route('exercises.edit',$exercise)}}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 hover:text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </a>
+            </div>
+          @endcan
+
+          @can('delete', $exercise)
           <form method="POST" action="{{ route('exercises.destroy',$exercise)}}"> 
             @csrf
             @method('delete')
@@ -39,6 +45,10 @@
               </svg>
             </button>
          </form>
+          @endcan
+
+  
+         
         </div>
         <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{{$exercise->operator}}</h2>
         <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$exercise->name}}</h1>

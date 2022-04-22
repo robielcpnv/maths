@@ -18,6 +18,7 @@ class QuestionController extends Controller
      */
     public function store(Exercise $exercise)
     {
+        $this->authorize('create', Question::class);
         $cycle = Question::all()->where('exercise_id',$exercise->id)->max('cycle');
         $cycle == null ? $cycle = 1 : $cycle;
         $operator = $exercise->operation;
@@ -65,6 +66,7 @@ class QuestionController extends Controller
      */
     public function destroy(Exercise $exercise, Question $question)
     {
+        $this->authorize('delete', $question);
         $questions = Question::where('exercise_id',$exercise->id)->where('cycle',$question->cycle)->get(['id']);
         Question::destroy($questions->toArray());
         
