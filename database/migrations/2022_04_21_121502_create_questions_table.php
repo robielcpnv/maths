@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('second');
             $table->unsignedBigInteger('operation_id');
             $table->unsignedBigInteger('exercise_id');
-            $table->foreign('operation_id')->references('id')->on('operations');
-            $table->foreign('exercise_id')->references('id')->on('exercises');
+            $table->foreign('operation_id')->references('id')->on('operations')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('exercise_id')->references('id')->on('exercises')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->integer('cycle');
             $table->string('response');
             $table->timestamps();

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('exercises', function (Blueprint $table) {
             $table->unsignedBigInteger('operation_id')->after('secondMax');
-            $table->foreign('operation_id')->references('id')->on('operations');
+            $table->foreign('operation_id')->references('id')->on('operations')->onUpdate('CASCADE')->onDelete('CASCADE');
         
         });
     }
