@@ -28,6 +28,12 @@ class QuestionController extends Controller
             $f = rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier;
             $s = rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier;
 
+            if($operator->slug === 'SUB'){
+                $x = $f;
+                $f = $s;
+                $s = $x;
+            }
+
             $result = eval("return $f $operator->name $s;");
             $compare = $f == $s ?'=':($f > $s?'>':'<');
 
