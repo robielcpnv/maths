@@ -28,7 +28,7 @@ class QuestionController extends Controller
             $f = rand($exercise->firstMin,$exercise->firstMax)*$exercise->firstMultiplier;
             $s = rand($exercise->secondMin,$exercise->secondMax)*$exercise->secondMultiplier;
 
-            if($operator->slug === 'SUB'){
+            if($f < $s){
                 $x = $f;
                 $f = $s;
                 $s = $x;
