@@ -15,12 +15,13 @@
     </div>
 </div>
 
-<section class="text-gray-600 body-font relative">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="lg:w-1/2 md:w-2/3 mx-auto">
-     
-        @forelse ($questions as $question)
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto relative">
 
+
+    <div class="lg:w-1/2 md:w-2/3 mx-auto relative">
+      @php $answers = count($questions) @endphp
+        @forelse ($questions as $question)
         <div class="p-2 w-1/2">
           <div class="md:flex md:items-center mb-6">
             @if ($question->operation->name !== '<>')
@@ -28,6 +29,7 @@
                 <p class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 px-4 text-left text-2xl">
                   {{$question['first']."  ".$question->operation->name."  ".$question['second']."  =  "}}
                   @if (App\Models\Answer::firstWhere('question_id',$question->id)->result !== $question['result'])
+                  @php $answers--; @endphp
                   <span  class="text-red-600 text-3xl">
                     {{App\Models\Answer::firstWhere('question_id',$question->id)->result}} =>
                   </span>
@@ -63,6 +65,15 @@
         </div>
        
     </div>
+
+    <div class="absolute h-64 w-64 right-80 top-16 border-8 border-rose-600 rounded-full">
+      <div class="text-center p-6">
+        <h1 class="text-7xl font-medium text-rose-600 pt-6 pl-16">{{$answers}}</h1>
+        <hr class="border-rose-600 bg-rose-400 border-4 rotate-45">
+        <h1 class="text-7xl font-medium text-rose-600 pr-16">{{count($questions)}}</h1>
+      </div>
+  </div>
+
   </div>
 </section>
   

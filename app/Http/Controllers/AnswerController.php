@@ -50,7 +50,6 @@ class AnswerController extends Controller
     {
         $questions = Question::all()->where('exercise_id',$question->exercise_id)->where('cycle',$question->cycle);
         $exercise = Exercise::find($question->exercise_id);
-
         return view('answers.show',compact('questions','exercise'));
     }
     // edit and update method no need if you want you could take new 
