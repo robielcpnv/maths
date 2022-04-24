@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+                
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
@@ -24,6 +24,20 @@
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+               <!-- Role -->
+               <div class="mt-4">
+                <x-label for="role" :value="__('Role')" />
+
+                <x-form-select name="role" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'">
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->slug }}" {{$role->slug === 'STU'?'selected':''}}>
+                            <span class="italic">{{ $role->name }}</span>
+                        </option>
+
+                    @endforeach
+                </x-form-select>
             </div>
 
             <!-- Password -->
