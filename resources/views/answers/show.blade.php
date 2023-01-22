@@ -75,12 +75,12 @@
   </div>
 
       <script>
-          gsap.fromTo("#answers-result",{scale:1},{
+          gsap.fromTo("#answers-result",{scale:0},{
             scale:1.5, 
-            duration: 1, 
-            repeat: Infinity,
+            delay: 1,
+            duration: 5,
+            rotation: 360, 
             easy:"elastic",
-            direction:"alternate",
           });
 
       </script>
