@@ -29,8 +29,8 @@
     <div class="flex flex-wrap -m-4">
 
       @forelse ($questions as $question)
-      <div class="p-4 md:w-1/3 ">
-        <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110">
+      <div class="p-4 md:w-1/3" >
+        <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110" data-aos="zoom-in" data-aos-easing="ease-in-sine">
 
 
           <div class="absolute right-0 top-0 inline-flex p-2">
@@ -89,10 +89,16 @@
 </section>
       </div>
   </div>
-
- 
- 
-
-
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init({
+          offset: 200,
+          delay: 10,
+          duration: 1000,
+          easing: 'ease-in-out',
+          anchorPlacement: 'top-center',
+      });
+  </script>
 </x-app-layout>
 

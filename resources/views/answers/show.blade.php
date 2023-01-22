@@ -22,7 +22,7 @@
     <div class="lg:w-1/2 md:w-2/3 mx-auto relative">
       @php $answers = count($questions) @endphp
         @forelse ($questions as $question)
-        <div class="p-2 w-1/2">
+        <div class="p-2 w-1/2" data-aos="zoom-in" data-aos-easing="ease-in-sine">
           <div class="md:flex md:items-center mb-6">
             @if ($question->operation->name !== '<>')
               <div class="md:w-full">
@@ -35,7 +35,7 @@
                   </span>
                   @endif
                   <span  class="text-green-600 text-3xl"> {{$question['result']}} </span>
-                  
+
                 </p>
               </div>
             @else
@@ -53,7 +53,7 @@
         </div>
       </div>
         @empty
-          
+
         @endforelse
 
         <div class="p-2 w-full">
@@ -63,10 +63,10 @@
             </button>
           </a>
         </div>
-       
+
     </div>
 
-    <div class="absolute h-64 w-64 right-80 top-16 border-8 border-rose-600 rounded-full">
+    <div class="absolute h-64 w-64 right-80 top-16 border-8 border-rose-600 rounded-full" id="answers-result">
       <div class="text-center p-6">
         <h1 class="text-7xl font-medium text-rose-600 pt-6 pl-16">{{$answers}}</h1>
         <hr class="border-rose-600 bg-rose-400 border-4 rotate-45">
@@ -74,7 +74,29 @@
       </div>
   </div>
 
+      <script>
+          gsap.fromTo("#answers-result",{scale:1},{
+            scale:1.5, 
+            duration: 1, 
+            repeat: Infinity,
+            easy:"elastic",
+            direction:"alternate",
+          });
+
+      </script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 50,
+        delay: 10,
+        duration: 1000,
+        easing: 'ease-in-out',
+        anchorPlacement: 'top-center',
+    });
+</script>
   </div>
 </section>
-  
+
 </x-app-layout>
