@@ -48,12 +48,12 @@
 
     <script>
    const t1 = gsap.timeline({delay:1, defaults:{duration:1, ease:"back.out(1.7)"}})
-    t1.from("#info-math", {y:-100, opacity:0,duration:1, stagger:0.25,authAlpha:0})
-    t1.from("#info-addition", {x:-200, opacity:0,duration:1, stagger:0.5,authAlpha:0})
-    t1.from("#info-soustraction", {x:+200, opacity:0,duration:1, stagger:0.75,authAlpha:0})
-    t1.from("#info-multiplication", {x:-200, opacity:0,duration:1, stagger:1,authAlpha:0})
-    t1.from("#info-division", {x:+200, opacity:0,duration:1, stagger:0.75,authAlpha:0})
-    t1.from("#info-comparaison", {y:100, opacity:0,duration:1, stagger:0.5,authAlpha:0})
+    t1.from("#info-math", {y:-100, opacity:0,duration:1, stagger:0.25,alpha:0})
+    t1.from("#info-addition", {x:-200, opacity:0,duration:1, stagger:0.5,alpha:0})
+    t1.from("#info-soustraction", {x:+200, opacity:0,duration:1, stagger:0.75,alpha:0})
+    t1.from("#info-multiplication", {x:-200, opacity:0,duration:1, stagger:1,alpha:0})
+    t1.from("#info-division", {x:+200, opacity:0,duration:1, stagger:0.75,alpha:0})
+    t1.from("#info-comparaison", {y:100, opacity:0,duration:1, stagger:0.5,alpha:0})
 
 
     </script>

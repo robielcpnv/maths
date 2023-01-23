@@ -22,7 +22,7 @@
     <div class="lg:w-1/2 md:w-2/3 mx-auto relative">
       @php $answers = count($questions) @endphp
         @forelse ($questions as $question)
-        <div class="p-2 w-1/2" data-aos="zoom-in" data-aos-easing="ease-in-sine">
+        <div class="p-2 w-1/2 answer" data-aos="fade-up" data-aos-easing="ease-in-sine" id={{"question".$loop->index}}>
           <div class="md:flex md:items-center mb-6">
             @if ($question->operation->name !== '<>')
               <div class="md:w-full">
@@ -74,16 +74,19 @@
       </div>
   </div>
 
-      <script>
-          gsap.fromTo("#answers-result",{scale:0},{
-            scale:1.5, 
-            delay: 1,
-            duration: 5,
-            rotation: 360, 
-            easy:"elastic",
-          });
+  <script>
+    var jsVariable = <?php echo $answers; ?>;
 
-      </script>
+    console.log(jsVariable);
+      gsap.fromTo("#answers-result",{scale:0},{
+        scale:1.5, 
+        delay: 1,
+        duration: 5,
+        rotation: 360, 
+        easy:"elastic",
+      });
+
+  </script>
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -96,6 +99,14 @@
         anchorPlacement: 'top-center',
     });
 </script>
+<script>
+  const questions = document.querySelectorAll('.answer');
+  const t1 = gsap.timeline({delay:1, defaults:{duration:1, ease:"back.out(1.7)",stagger:0.25}})
+  for(let question of questions) {  
+    t1.from(question.id, {y:-100, opacity:0,duration:1,alpha:0})
+  }
+</script>
+
   </div>
 </section>
 

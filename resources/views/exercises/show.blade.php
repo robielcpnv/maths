@@ -29,7 +29,7 @@
     <div class="flex flex-wrap -m-4">
 
       @forelse ($questions as $question)
-      <div class="p-4 md:w-1/3" >
+      <div class="p-4 md:w-1/3 exercise" >
         <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110" data-aos="zoom-in" data-aos-easing="ease-in-sine">
 
 
@@ -92,6 +92,12 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+      gsap.fromTo(".exercise",{x:-200},{
+      x:0, 
+      delay: 1,
+      duration: 3, 
+      easy:"elastic",
+    });
       AOS.init({
           offset: 200,
           delay: 10,

@@ -23,7 +23,7 @@
      
         @forelse ($questions as $question)
 
-        <div class="p-2 w-1/2">
+        <div class="p-2 w-1/2 quetions">
           <div class="md:flex md:items-center mb-6" data-aos="zoom-in" 
           data-aos-easing="ease-out-cubic"
           data-aos-duration="2000">
@@ -89,10 +89,17 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+      gsap.fromTo(".quetions",{y:-200, opacity:0},{
+      opacity:1,
+      y:0, 
+      delay: 0,
+      duration: 2, 
+      easy:"power4.out",
+    });
     AOS.init({
         offset: 50,
-        delay: 10,
-        duration: 1000,
+        delay: 0,
+        duration: 2,
         easing: 'ease-in-out',
         anchorPlacement: 'top-center',
     });
