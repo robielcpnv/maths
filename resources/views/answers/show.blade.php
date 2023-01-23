@@ -42,6 +42,7 @@
             <p class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 px-4 text-2xl">
               {{$question['first']}}
               @if (App\Models\Answer::firstWhere('question_id',$question->id) !== null && App\Models\Answer::firstWhere('question_id',$question->id)->result != $question['result'])
+              @php $answers--; @endphp
               <span  class="text-red-600 px text-3xl">
                 {{App\Models\Answer::firstWhere('question_id',$question->id)->result}}
               </span>
