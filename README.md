@@ -72,16 +72,11 @@ Populate the database with fake data
 php artisan migrate:fresh --seed
 ```
 
-
-## Deployment
+## Usage
 
 Compile the JavaScript and CSS assets: ```npm run dev```
 
 Start the development server: ```php artisan serve```
-
-## Usage
-
-The project can be accessed at http://localhost:8000 in your web browser.
 
 ```
   VITE v4.0.4  ready in 2197 ms
