@@ -20,8 +20,8 @@
     <div class="flex flex-wrap -m-4 pt-5">
     @forelse ($exercises as $exercise )
 
-    <div class="p-4 md:w-1/3 ">
-      <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110 ">
+    <div class="p-4 md:w-1/3 exercises" >
+      <div class="flex rounded-lg h-full bg-gray-50 p-8 flex-col hover:scale-110">
          
         <div class="absolute right-0 top-0 inline-flex p-2">
 
@@ -78,6 +78,16 @@
     
     </div>
   </div>
+
+  <script>
+    gsap.fromTo(".exercises",{scale:0},{
+      scale:1, 
+      delay: 1,
+      duration: 5, 
+      easy:"elastic",
+    });
+
+</script>
 </section>
 
 </x-app-layout>

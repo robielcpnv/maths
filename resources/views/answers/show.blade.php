@@ -22,7 +22,7 @@
     <div class="lg:w-1/2 md:w-2/3 mx-auto relative">
       @php $answers = count($questions) @endphp
         @forelse ($questions as $question)
-        <div class="p-2 w-1/2">
+        <div class="p-2 w-1/2 answer" data-aos="fade-up" data-aos-easing="ease-in-sine" id={{"question".$loop->index}}>
           <div class="md:flex md:items-center mb-6">
             @if ($question->operation->name !== '<>')
               <div class="md:w-full">
@@ -35,13 +35,14 @@
                   </span>
                   @endif
                   <span  class="text-green-600 text-3xl"> {{$question['result']}} </span>
-                  
+
                 </p>
               </div>
             @else
             <p class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 px-4 text-2xl">
               {{$question['first']}}
               @if (App\Models\Answer::firstWhere('question_id',$question->id) !== null && App\Models\Answer::firstWhere('question_id',$question->id)->result != $question['result'])
+              @php $answers--; @endphp
               <span  class="text-red-600 px text-3xl">
                 {{App\Models\Answer::firstWhere('question_id',$question->id)->result}}
               </span>
@@ -53,7 +54,7 @@
         </div>
       </div>
         @empty
-          
+
         @endforelse
 
         <div class="p-2 w-full">
@@ -63,10 +64,10 @@
             </button>
           </a>
         </div>
-       
+
     </div>
 
-    <div class="absolute h-64 w-64 right-80 top-16 border-8 border-rose-600 rounded-full">
+    <div class="absolute h-64 w-64 right-80 top-16 border-8 border-rose-600 rounded-full" id="answers-result">
       <div class="text-center p-6">
         <h1 class="text-7xl font-medium text-rose-600 pt-6 pl-16">{{$answers}}</h1>
         <hr class="border-rose-600 bg-rose-400 border-4 rotate-45">
@@ -74,7 +75,40 @@
       </div>
   </div>
 
+  <script>
+    var jsVariable = <?php echo $answers; ?>;
+
+    console.log(jsVariable);
+      gsap.fromTo("#answers-result",{scale:0},{
+        scale:1.5, 
+        delay: 1,
+        duration: 5,
+        rotation: 360, 
+        easy:"elastic",
+      });
+
+  </script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        offset: 50,
+        delay: 10,
+        duration: 1000,
+        easing: 'ease-in-out',
+        anchorPlacement: 'top-center',
+    });
+</script>
+<script>
+  const questions = document.querySelectorAll('.answer');
+  const t1 = gsap.timeline({delay:1, defaults:{duration:1, ease:"back.out(1.7)",stagger:0.25}})
+  for(let question of questions) {  
+    t1.from(question.id, {y:-100, opacity:0,duration:1,alpha:0})
+  }
+</script>
+
   </div>
 </section>
-  
+
 </x-app-layout>

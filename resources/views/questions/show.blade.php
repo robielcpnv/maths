@@ -23,8 +23,10 @@
      
         @forelse ($questions as $question)
 
-        <div class="p-2 w-1/2">
-          <div class="md:flex md:items-center mb-6">
+        <div class="p-2 w-1/2 quetions">
+          <div class="md:flex md:items-center mb-6" data-aos="zoom-in" 
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000">
             @if ($question->operation->name !== '<>')
               <div class="md:w-1/3">
                 <label for="{{$question['id']}}" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -84,6 +86,24 @@
       </form>
     </div>
   </div>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+      gsap.fromTo(".quetions",{y:-200, opacity:0},{
+      opacity:1,
+      y:0, 
+      delay: 0,
+      duration: 2, 
+      easy:"power4.out",
+    });
+    AOS.init({
+        offset: 50,
+        delay: 0,
+        duration: 2,
+        easing: 'ease-in-out',
+        anchorPlacement: 'top-center',
+    });
+</script>
 </section>
   
 </x-app-layout>
