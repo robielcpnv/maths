@@ -26,4 +26,12 @@ class ExerciseController extends Controller
             'exercise' => $exercise
         ]);
     }
+
+    public function create()
+    {
+        $operations = Operation::all();
+        return response()->json([
+            'operations' => $operations
+        ]);
+    }
 }
