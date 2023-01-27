@@ -11,7 +11,7 @@ Perform for AWA 1
 | [NPM](https://www.npmjs.com/)                 | 8.19.2    |
 | [php](https://www.php.net/)  | 8.1.12   |
 | [vue](https://v2.vuejs.org/v2/guide/)  | 3.2.36   |
-| [Gsap](https://greensock.com/docs/v3/Installation) | 3.11.4   |
+| [Gsap](https://greensock.com/docs/v3/Installation)  | 3.11.4   |
 | [motion](https://motion.dev/vue/quick-start)  | 10.15.5   |
 | [aos](https://michalsnik.github.io/aos/)  | 2.3.4  |
 
@@ -72,16 +72,11 @@ Populate the database with fake data
 php artisan migrate:fresh --seed
 ```
 
-
-## Deployment
+## Usage
 
 Compile the JavaScript and CSS assets: ```npm run dev```
 
 Start the development server: ```php artisan serve```
-
-## Usage
-
-The project can be accessed at http://localhost:8000 in your web browser.
 
 ```
   VITE v4.0.4  ready in 2197 ms
