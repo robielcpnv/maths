@@ -41,7 +41,7 @@
 
             <select id="operation" name="operation"
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                <option v-for="operator in operators" :value="operator.value">{{ operator.label }}</option>
+                <option v-for="operator in operators" :value="operator.slug">{{ operator.name }}</option>
             </select>
         </div>
     </div>
@@ -83,17 +83,17 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
    data(){
     return {
-        operators: [
-            {value: 'ADD', label: '+'},
-            {value: 'SUB', label: '-'},
-            {value: 'MUL', label: '*'},
-            {value: 'DIV', label: '/'},
-            {value: 'CMP', label: '< >'},
-        ],
+        operators: [],
     }
+   },mounted(){
+    axios.get('/api/operations')
+           .then(async response => {
+              this.operators = await response.data.operations;
+           })
    }
 }
 </script>
